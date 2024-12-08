@@ -16,6 +16,7 @@ export default function Home() {
   const handleInputChange = (e) => setInputText(e.target.value);
   const handleKeyDown = (e) => e.key === "Enter" && handleAddTodo();
 
+  // 할 일 목록을 가져오는 함수
   useEffect(() => {
     const fetchTodos = async () => {
       try {
@@ -35,6 +36,7 @@ export default function Home() {
     fetchTodos();
   }, []);
 
+  // 할 일을 추가하는 함수
   const handleAddTodo = async () => {
     if (inputText.trim()) {
       const newTodo = { name: inputText.trim() };
@@ -58,6 +60,7 @@ export default function Home() {
     }
   };
 
+  // 할 일의 isCompleted를 토글하는 함수
   const handleToggleCompletion = async (item, currentStatus) => {
     const { id, tenantId="yezzero", ...updatedItem } = item;
     const newItem = { ...updatedItem, isCompleted: !currentStatus };
